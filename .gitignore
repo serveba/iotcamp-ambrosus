@@ -1,0 +1,13 @@
+*.tmp
+*.log
+.env
+.projectile
+node_modules
+package-lock.json
+
+_local_settings
+ES.json
+logs
+
+*~
+.projectile
