@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <!--
+
+    <title>{title}</title>
+
+    -->
+
+    <title>TEST</title>
+
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"  crossorigin="anonymous"></script>
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <style type="text/css">
+
+
+      a {
+        color: #00B7FF;
+      }
+
+      body, html {
+        padding: 50px;
+        font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+        margin: 0;
+        overflow: hidden;
+        height:100%;
+      }
+
+      @media (min-width: 200px){
+        #left {
+          position: absolute;
+          top: 10px;
+          bottom: 0;
+          left: 0;
+          width: 30%;
+          overflow-y: scroll;
+        }
+
+        #right {
+          position: absolute;
+          top: 10px;
+          bottom: 0;
+          right: 0;
+          overflow-y: scroll;
+          width: 70%;
+        }
+      }
+
+      #left {
+        /*background-color: #FC6E51;*/
+        text-align: center;
+        height:100%;
+      }
+
+      #response_textarea{
+        width: 100%;
+        height: 80%;
+      }
+
+      #clear_response {
+        float: right;
+      }
+    </style>
+
+
+
+    <script src="/js/zacore_test_rest.js"></script>
+
+
+  </head>
+  <body>
+    <!--<h1>{title}</h1>
+
+    {+content}
+    This is the base content with a dust.js template.
+    {/content}
+    -->
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-4" id="left">
+
+          <div class="panel panel-primary">
+            <div class="panel-body">
+              <form role="form">
+                <div class="form-group">
+                  <label for="key">KEY:</label>
+                  <input type="text" class="form-control" id="key" name="key" value="">
+                </div>
+
+                <div class="form-group">
+                  <label for="token">TOKEN:</label>
+                  <input type="text" class="form-control" id="token" name="token" value="">
+                </div>
+
+              </form>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <div class="panel-heading"> <h3 class="panel-title">POST /api/v1/admin/authenticate</h3></div>
+            </div>
+            <div class="panel-body">
+              <form role="form" id="authenticate_form" action="/api/v1/admin/authenticate" target="_blank" method="post">
+                <div class="form-group">
+                  <label for="login">Login:</label>
+                  <input type="text" class="form-control" id="login" name="login" value="hulk">
+                </div>
+                <div class="form-group">
+                  <label for="password">Password:</label>
+                  <input type="password" class="form-control" id="password" name="password" value="">
+                </div>
+
+                <button type="submit" class="btn btn-default">Submit</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <div class="panel-heading"> <h3 class="panel-title">POST /api/v1/testing/receivesms</h3></div>
+            </div>
+            <div class="panel-body">
+              <form role="form" id="receivesms_form" action="/api/v1/testing/receivesms" target="_blank" method="post">
+                <div class="form-group">
+                  <label for="from">From number:</label>
+                  <input type="text" class="form-control" id="from" name="from" value="34652512532">
+                </div>
+                <div class="form-group">
+                  <label for="to">To number:</label>
+                  <input type="text" class="form-control" id="to" name="to" value="34600124219">
+                </div>
+
+                <div class="form-group">
+                  <label for="body">Body:</label>
+                  <input type="text" class="form-control" id="body" name="body" value="I have a problem">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </form>
+            </div>
+          </div>
+
+
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <div class="panel-heading"> <h3 class="panel-title">POST /api/v1/admin/sendmessage</h3></div>
+            </div>
+            <div class="panel-body">
+              <form role="form" id="sendsms_form" action="/api/v1/admin/sendmessage" method="post">
+                <div class="form-group">
+                  <label for="idStaffer">idStaffer:</label>
+                  <input type="text" class="form-control" id="idStaffer" name="idStaffer" size="10" value="">
+                </div>
+                <div class="form-group">
+                  <label for="idTicket">idTicket:</label>
+                  <input type="text" class="form-control" id="idTicket" name="idTicket" size="10" value="">
+                </div>
+
+                <div class="form-group">
+                  <label for="message">Body:</label>
+                  <input type="text" class="form-control" id="message" name="message" value="reply from the staffer">
+                </div>
+
+                <button type="submit" class="btn btn-default">Submit</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <form role="form" id="gettargets_form" action="/api/v1/admin/targets" target="_blank" method="post">
+                <button type="submit" class="btn btn-default">GET TARGETS</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <div class="panel-heading"> <h3 class="panel-title">GET STAFFERS</h3></div>
+              <form role="form" id="getstaffers_form" action="/api/v1/admin/targets" target="_blank" method="post">
+                <div class="form-group">
+                  <label for="idTarget">idTarget:</label>
+                  <input type="text" class="form-control" id="idTarget" name="idTarget" value="5589d6864d8b8ebe059a813b">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <div class="panel-heading"> <h3 class="panel-title">GET TICKETS</h3></div>
+              <form role="form" id="gettickets_form" action="/api/v1/admin/targets" target="_blank" method="post">
+                <div class="form-group">
+                  <label for="idTarget">idTarget:</label>
+                  <input type="text" class="form-control" id="idTarget" name="idTarget" value="5589d6864d8b8ebe059a813b">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <div class="panel-heading"> <h3 class="panel-title">GET MESSAGES</h3></div>
+              <form role="form" id="getmessages_form" action="/api/v1/admin/messages" target="_blank" method="get">
+                <div class="form-group">
+                  <label for="idTicket">idTicket:</label>
+                  <input type="text" class="form-control" id="idTicket" name="idTicket" value="">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </form>
+            </div>
+          </div>
+
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <div class="panel-heading"> <h3 class="panel-title">GET CHARTS</h3></div>
+              <form role="form" id="getcharts_form" action="/api/v1/admin/charts" target="_blank" method="get">
+
+
+
+                <div class="form-group">
+                  <label for="idTicket">id:</label>
+                  <input type="text" class="form-control" id="id" name="id" value="570e673a68ac346534d1816d">
+                </div>
+                <div class="form-group">
+                  <label for="startDate">startDate:</label>
+                  <input type="text" class="form-control" id="startDate" name="startDate" value="1485039600000">
+                </div>
+                <div class="form-group">
+                  <label for="endDate">endDate:</label>
+                  <input type="text" class="form-control" id="endDate" name="endDate" value="1485644399000">
+                </div>
+                <div class="form-group">
+                  <label for="typeOfChart">typeOfChart:</label>
+                  <input type="text" class="form-control" id="typeOfChart" name="typeOfChart" value="1">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <div class="panel-heading"> <h3 class="panel-title">EXPORT CSV MESSAGES</h3></div>
+              <form role="form" id="getcsv_form" action="/api/v1/admin/messages/export" target="_blank" method="get">
+                <div class="form-group">
+                  <label for="idTarget">id:</label>
+                  <input type="text" class="form-control" id="idTarget" name="idTarget" value="5589d6864d8b8ebe059a813b">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <div class="panel-heading"> <h3 class="panel-title">CLOSE TICKET</h3></div>
+              <form role="form" id="closeticket_form" action="/api/v1/admin/closeTicket" target="_blank" method="post">
+                <div class="form-group">
+                  <label for="idTicket">idTicket:</label>
+                  <input type="text" class="form-control" id="idTicket" name="idTicket" value="">
+                  <label for="idStaffer">idStaffer:</label>
+                  <input type="text" class="form-control" id="idStaffer" name="idStaffer" value="">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+              <form role="form" id="newfakeenv_form" action="/api/v1/testing/newfakeenv" target="_blank" method="post">
+                <button type="submit" class="btn btn-default">GET /newfakeenv</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="panel panel-primary">
+            <div class="panel-heading">
+            <h3 class="panel-title">Load/Clear fake data into DB</h3>
+
+              <hr>
+                <form role="form" id="filltestdb_form" action="/api/v1/testing/filltestdb" target="_blank" method="post">
+                  <button type="submit" class="btn btn-default">POST /testing/filltestdb</button>
+                </form>
+                <hr>
+                <form role="form" id="cleartestdb_form" action="/api/v1/testing/cleartestdb" target="_blank" method="post">
+                  <button type="submit" class="btn btn-default">POST /testing/cleartestdb</button>
+                </form>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="col-md-8" id="right">
+
+          <button type="button" id="clear_response" class="btn btn-default">Clear data</button>
+          <h2>Request:</h2>
+          <span id="request_text"></span>
+
+          <h2>Response:</h2>
+          <textarea id="response_textarea"></textarea>
+        </div>
+
+    </div>
+
+<p>
+
+</p>
+
+
+
+  </body>
+</html>

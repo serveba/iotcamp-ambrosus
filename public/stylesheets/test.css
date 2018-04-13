@@ -1,0 +1,40 @@
+body, html {
+  margin: 0;
+  overflow: hidden;
+  height:100%;
+}
+
+@media (min-width: 200px){
+  #left {
+    position: absolute;
+    top: 10px;
+    bottom: 0;
+    left: 0;
+    width: 30%;
+    overflow-y: scroll; 
+  }
+  
+  #right {
+    position: absolute;
+    top: 10px;
+    bottom: 0;
+    right: 0;
+    overflow-y: scroll;
+    width: 70%;
+  }
+}
+
+#left {
+  /*background-color: #FC6E51;*/
+  text-align: center;
+  height:100%;
+}
+
+#response_textarea{
+	width: 100%;
+  height: 80%;
+}
+
+#clear_response {
+  float: right;
+}
