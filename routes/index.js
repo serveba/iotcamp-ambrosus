@@ -5,11 +5,23 @@ const express = require('express');
 const AmbrosusHelper = require('../helpers/ambrosushelper');
 const api = new AmbrosusHelper();
 
+const Bootstrap = require('../helpers/bootstrap');
+const bootstrap = new Bootstrap();
+
 const router = express.Router();
 
 router.get('/', async function(req, res) {
   const assetId = '0x09cafe6985329c9c706b186a7f37e3ebbec4963508ae994690cb3de30b0ef26d';
   const result = await api.retrieveEvents(assetId);
+
+  res.render('index', {
+    title: 'Ambrosus Challenge',
+    result: result
+  });
+});
+
+router.get('/bootstrap', async function(req, res) {
+  const result = await bootstrap.createItemsOnBlockchain();
 
   res.render('index', {
     title: 'Ambrosus Challenge',

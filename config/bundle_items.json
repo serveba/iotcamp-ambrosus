@@ -1,0 +1,28 @@
+{
+  "assets": [
+    {
+      "metadata": [
+        {
+          "type": "Facts",
+          "message": "Vegan, Gluten free, Lactose free, Soy free"
+        },
+        {
+          "type": "Picked in",
+          "message": "December 2007"
+        }
+      ]
+    },
+    {
+      "metadata": [
+        {
+          "type": "Country of origin",
+          "message": "Brazil, Triangulo Minero"
+        },
+        {
+          "type": "Photo url",
+          "message": "https://groceries.morrisons.com/productImages/116/116557011_0_640x640.jpg?identifier=a86057d9f4c7d17fb0b18e2b9f33ddb5"
+        }
+      ]
+    }
+  ]
+}

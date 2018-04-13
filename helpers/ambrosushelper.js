@@ -4,7 +4,8 @@ const rp = require('request-promise');
 
 module.exports = class AmbrosusHelper {
 
-  async createAsset(asset) {
+  async createAsset(sequence) {
+    let result = '';
     const options = {
       method: 'POST',
       uri: settings.AMB_URL,
@@ -18,7 +19,7 @@ module.exports = class AmbrosusHelper {
           'idData': {
             'createdBy': settings.AMB_PROVIDER_ADDR,
             'timestamp': Math.floor(new Date() / 1000),
-            'sequenceNumber': 0
+            'sequenceNumber': sequence
           }
         }
       })
@@ -38,6 +39,8 @@ module.exports = class AmbrosusHelper {
     //   {'type': 'custom', 'message': 'This is the first event'},
     //   ...
     // ];
+    let result = '';
+    logger.info('createEvent, assetId', assetId);
 
     const options = {
       method: 'POST',
@@ -50,6 +53,7 @@ module.exports = class AmbrosusHelper {
       body: JSON.stringify({
         'content': {
           'idData': {
+            'assetId': assetId,
             'createdBy': settings.AMB_PROVIDER_ADDR,
             'timestamp': Math.floor(new Date() / 1000),
             'sequenceNumber': 0,
@@ -72,7 +76,7 @@ module.exports = class AmbrosusHelper {
   }
 
   async retrieveEvents(assetId) {
-    const url = settings.AMB_URL + 'assets/' + assetId + '/events';
+    const url = settings.AMB_URL + assetId + '/events';
     const options = {uri: url };
     let result = '';
     try {
