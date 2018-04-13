@@ -1,7 +1,6 @@
 // for measuring bootstrapping time
 const init = (new Date()).getTime();
 
-
 /**
  *  MODULE DEPENDENCIES
  * -----------------------------------------------------------------------------
@@ -12,31 +11,13 @@ const path          = require('path');
 const cookieParser  = require('cookie-parser');
 const bodyParser    = require('body-parser');
 const cons          = require('consolidate');
-
 const fs            = require('fs');
 
-/**
- * INTERNAL DEPENDENCIES
- */
 const settings    = require('./config/settings');
 const logger      = require('./helpers/loggerhelper');
-
-const port = 3000;
-
-
-
-
-/**
- * ROUTING
- * ------------------------------------------------------------------------
- * include a route file for each major area of functionality in the site
- **/
 const routes = require('./routes/index');
+const port = 3333;
 
-/**
- * CONFIGURATION
- * ------------------------------------------------------------------------------
- **/
 const app = express();
 
 app.set('port', port);
